@@ -4,26 +4,32 @@ import org.robovm.cocoatouch.uikit._
 
 class Main extends UIApplicationDelegate.Adapter {
   var window: UIWindow = _
-  var clicks = 0
+  var alert: UIAlertView = _
 
-  override def didFinishLaunching(application: UIApplication, launchOptions: NSDictionary[_ <: NSObject, _ <: NSObject]) = {
+  override def didFinishLaunching(application: UIApplication) {
+    alert = new UIAlertView()
+    alert.setTitle("Hello, Human!")
+    alert.setMessage("Would you like to play a game?")
+    alert.addButton("Yes")
+
     val button = UIButton.fromType(UIButtonType.RoundedRect)
-    button.setFrame(new CGRect(115.0f, 121.0f, 91.0f, 37.0f))
-    button.setTitle("Click me!", UIControlState.Normal)
+    button.setTitle("Hello, Robo!", UIControlState.Normal)
+    button.setFrame(new CGRect(0, 0, 200, 100))
 
     button.addOnTouchUpInsideListener(new UIControl.OnTouchUpInsideListener {
       override def onTouchUpInside(c: UIControl, e: UIEvent) {
-        clicks += 1
-        button.setTitle(s"Click #$clicks", UIControlState.Normal)
+        alert.show
       }
     })
 
     window = new UIWindow(UIScreen.getMainScreen().getBounds())
     window.setBackgroundColor(UIColor.lightGrayColor())
-    window.addSubview(button)
-    window.makeKeyAndVisible()
 
-    true
+    window.addSubview(button)
+    val bounds = button.getSuperview().getBounds()
+    button.setCenter(new CGPoint(bounds.origin.x + bounds.size.width / 2, bounds.origin.y + bounds.size.height / 2))
+
+    window.makeKeyAndVisible()
   }  
 }
 
