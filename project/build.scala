@@ -9,7 +9,7 @@ object ScaliOSBuild extends Build {
   def makeDemo(path: String, name: String, settings: Seq[Setting[_]] = Seq.empty): Project = {
     RobovmProject(path, file(path),
       settings = Defaults.defaultSettings ++ settings ++ Seq(
-        scalaVersion := "2.10.2",
+        scalaVersion := "2.10.3",
         executableName := name
       )
     )
