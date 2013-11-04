@@ -2,7 +2,7 @@ import org.robovm.cocoatouch.coregraphics._
 import org.robovm.cocoatouch.foundation._
 import org.robovm.cocoatouch.uikit._
 
-class Main extends UIApplicationDelegate.Adapter {
+class AppDelegate extends UIApplicationDelegate.Adapter {
   var window: UIWindow = _
   var alert: UIAlertView = _
 
@@ -36,8 +36,7 @@ class Main extends UIApplicationDelegate.Adapter {
 object Main {
   def main(args: Array[String]) {
       val pool = new NSAutoreleasePool()
-      UIApplication.main(args, null, classOf[Main])
+      UIApplication.main(args, null, classOf[AppDelegate])
       pool.drain()
   }
 }
-
