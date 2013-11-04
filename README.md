@@ -11,4 +11,5 @@ You can run each demo on device or simulator:
 
 ## Demos
 
+ * empty: provides just an application delegate and a window
  * hello: setting up simple view
