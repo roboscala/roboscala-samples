@@ -4,6 +4,7 @@ import Keys._
 import sbtrobovm.RobovmPlugin._
 
 object ScaliOSBuild extends Build {
+  lazy val native = makeDemo("native", "Native Robo")
   lazy val hello = makeDemo("hello", "Hello Robo")
   lazy val empty = makeDemo("empty", "Empty Robo")
 

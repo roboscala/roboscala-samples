@@ -9,7 +9,12 @@ You can run each demo on device or simulator:
     $ sbt demo-name/iphone-sim
     $ sbt demo-name/ipad-sim
 
+Or for native applications:
+    
+    $ sbt demo-name/native
+
 ## Demos
 
  * empty: provides just an application delegate and a window
  * hello: setting up simple view
+ * native: example of compiling native desktop programs
