@@ -3,6 +3,18 @@ Scala iOS Demos
 
 Examples of using Scala to create iOS apps and games with [sbt-robovm](https://github.com/ajhager/sbt-robovm) and [RoboVM](http://www.robovm.org/).
 
+## Prerequisities
+
+ * [RoboVM 0.0.14]()
+ * Current snapshot of [sbt-robovm plugin](https://github.com/roboscala/sbt-robovm) should be installed to your local repository:
+```
+$ git clone git://github.com/ajhager/sbt-robovm.git
+$ cd sbt-robovm
+$ sbt publish-local
+```
+
+## Run
+
 You can run each demo on device or simulator:
 
     $ sbt demo-name/device
