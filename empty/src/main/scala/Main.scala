@@ -1,11 +1,11 @@
-import org.robovm.cocoatouch.foundation._
-import org.robovm.cocoatouch.uikit._
+import org.robovm.apple.foundation._
+import org.robovm.apple.uikit._
 
-class AppDelegate extends UIApplicationDelegate.Adapter {
+class AppDelegate extends UIApplicationDelegateAdapter {
   lazy val window = new UIWindow(UIScreen.getMainScreen.getBounds)
 
   override def didFinishLaunching(application: UIApplication) {
-    window.setBackgroundColor(UIColor.whiteColor)
+    window.setBackgroundColor(UIColor.colorWhite)
     window.makeKeyAndVisible
   }  
 }

@@ -1,8 +1,8 @@
-import org.robovm.cocoatouch.coregraphics._
-import org.robovm.cocoatouch.foundation._
-import org.robovm.cocoatouch.uikit._
+import org.robovm.apple.coregraphics._
+import org.robovm.apple.foundation._
+import org.robovm.apple.uikit._
 
-class AppDelegate extends UIApplicationDelegate.Adapter {
+class AppDelegate extends UIApplicationDelegateAdapter {
   var window: UIWindow = _
 
   override def didFinishLaunching(application: UIApplication) {
@@ -10,7 +10,7 @@ class AppDelegate extends UIApplicationDelegate.Adapter {
     title.setText("Hello, Robo!")
 
     window = new UIWindow(UIScreen.getMainScreen().getBounds())
-    window.setBackgroundColor(UIColor.lightGrayColor())
+    window.setBackgroundColor(UIColor.colorLightGray())
 
     window.addSubview(title)
     val bounds = title.getSuperview().getBounds()
