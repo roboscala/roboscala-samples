@@ -6,7 +6,7 @@ class AppDelegate extends UIApplicationDelegateAdapter {
 
   override def didFinishLaunching(application: UIApplication) {
     window.setBackgroundColor(UIColor.colorWhite)
-    window.makeKeyAndVisible
+    window.makeKeyAndVisible()
   }  
 }
 
