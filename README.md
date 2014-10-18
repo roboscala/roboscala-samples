@@ -5,13 +5,7 @@ Examples of using Scala to create iOS apps and games with [sbt-robovm](https://g
 
 ## Prerequisities
 
- * [RoboVM 0.0.14]()
- * Current snapshot of [sbt-robovm plugin](https://github.com/roboscala/sbt-robovm) should be installed in your local ivy repository:
-```
-$ git clone git://github.com/ajhager/sbt-robovm.git
-$ cd sbt-robovm
-$ sbt publish-local
-```
+	* See [sbt-robovm](https://github.com/roboscala/sbt-robovm) for setup instructions.
 
 ## Run
 
@@ -27,6 +21,6 @@ Or for native applications:
 
 ## Demos
 
- * empty: provides just an application delegate and a window
- * hello: setting up simple view
- * native: example of compiling native desktop programs
+	* empty: provides just an application delegate and a window
+	* hello: setting up simple view
+	* native: example of compiling native desktop programs
