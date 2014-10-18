@@ -10,7 +10,7 @@ class AppDelegate extends UIApplicationDelegateAdapter {
     title.setText("Hello, Robo!")
 
     window = new UIWindow(UIScreen.getMainScreen().getBounds())
-    window.setBackgroundColor(UIColor.colorLightGray())
+    window.setBackgroundColor(UIColor.white())
 
     window.addSubview(title)
     val bounds = title.getSuperview().getBounds()
