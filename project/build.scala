@@ -8,7 +8,7 @@ object ScaliOSBuild extends Build {
   lazy val hello = makeDemo("hello", "Hello Robo")
   lazy val empty = makeDemo("empty", "Empty Robo")
 
-  val roboVersion = "0.0.14"
+  val roboVersion = "1.0.0-alpha-04"
   val roboDependencies = Seq("org.robovm" % "robovm-compiler" % roboVersion
                           ,"org.robovm" % "robovm-rt" % roboVersion
                           ,"org.robovm" % "robovm-objc" % roboVersion
@@ -18,7 +18,7 @@ object ScaliOSBuild extends Build {
   def makeDemo(path: String, name: String, settings: Seq[Setting[_]] = Seq.empty): Project = {
     RobovmProject(path, file(path),
       settings = Defaults.defaultSettings ++ settings ++ Seq(
-        scalaVersion := "2.10.3",
+        scalaVersion := "2.11.2",
         libraryDependencies ++= roboDependencies,
         executableName := name
       )
