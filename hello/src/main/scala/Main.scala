@@ -1,29 +1,25 @@
-import org.robovm.apple.coregraphics._
-import org.robovm.apple.foundation._
+import org.robovm.apple.foundation.NSAutoreleasePool
 import org.robovm.apple.uikit._
 
-class AppDelegate extends UIApplicationDelegateAdapter {
+class HelloWorld extends UIApplicationDelegateAdapter {
   var window: UIWindow = _
 
-  override def didFinishLaunching(application: UIApplication) {
-    val title = new UILabel(new CGRect(0, 0, 200, 100))
-    title.setText("Hello, Robo!")
+  override def didFinishLaunching(applicaiton:UIApplication, launchOptions:UIApplicationLaunchOptions) : Boolean = {
+    val myViewController = new MyViewController();
 
     window = new UIWindow(UIScreen.getMainScreen().getBounds())
-    window.setBackgroundColor(UIColor.white())
-
-    window.addSubview(title)
-    val bounds = title.getSuperview().getBounds()
-    title.setCenter(new CGPoint(bounds.origin.x + bounds.size.width / 2, bounds.origin.y + bounds.size.height / 2))
-
+    window.setRootViewController(myViewController);
     window.makeKeyAndVisible()
+    addStrongRef(window);
+
+    return true;
   }  
 }
 
 object Main {
   def main(args: Array[String]) {
       val pool = new NSAutoreleasePool()
-      UIApplication.main(args, null, classOf[AppDelegate])
+      UIApplication.main(args, null, classOf[HelloWorld])
       pool.drain()
   }
 }
