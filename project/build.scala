@@ -16,8 +16,9 @@ object ScaliOSBuild extends Build {
     RobovmProject(path, file(path),
       settings = Defaults.defaultSettings ++ settings ++ Seq(
         scalaVersion := "2.11.2",
+        executableName := name,
         libraryDependencies ++= roboDependencies,
-        executableName := name
+        unmanagedResources in Compile += sourceDirectory.value / "assets"
       )
     )
   }
