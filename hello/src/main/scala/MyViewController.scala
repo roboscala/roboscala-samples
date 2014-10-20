@@ -5,10 +5,10 @@ import org.robovm.apple.uikit._
 class MyViewController extends UIViewController {
   lazy val label = new UILabel(new CGRect(20, 104, 280, 44))
   lazy val textField = new UITextField(new CGRect(44, 32, 232, 31))
-  var string = "Hello, World!"
+  var string = "World"
 
   override def viewDidLoad() {
-    val background = new UIImageView(UIImage.create("Background.png"))
+    val background = new UIImageView(UIImage.create("assets/Background.png"))
     background.setFrame(new CGRect(0, 0, 320, 480))
     background.setContentMode(UIViewContentMode.Center)
     background.setUserInteractionEnabled(false)
@@ -16,7 +16,6 @@ class MyViewController extends UIViewController {
 
     textField.setContentVerticalAlignment(UIControlContentVerticalAlignment.Center)
     textField.setBorderStyle(UITextBorderStyle.RoundedRect)
-    textField.setPlaceholder(string)
     textField.setFont(UIFont.getFont("Helvetica", 17))
     textField.setClearsOnBeginEditing(true)
     textField.setAdjustsFontSizeToFitWidth(true)
@@ -29,7 +28,7 @@ class MyViewController extends UIViewController {
         if (theTextField == textField) {
           textField.resignFirstResponder()
           string = textField.getText()
-          label.setText(string)
+          label.setText(getText())
         }
         return true
       }
@@ -40,7 +39,17 @@ class MyViewController extends UIViewController {
     label.setTextColor(UIColor.white())
     label.setBaselineAdjustment(UIBaselineAdjustment.AlignCenters)
     label.setTextAlignment(NSTextAlignment.Center)
-    label.setText(string)
+    label.setText(getText())
     getView().addSubview(label)
+  }
+
+  override def touchesBegan (touches:NSSet[UITouch], event:UIEvent) {
+    textField.resignFirstResponder()
+    textField.setText(string)
+    super.touchesBegan(touches, event)
+  }
+
+  def getText() : String = {
+    return "Hello, " + string + "!"
   }
 }
