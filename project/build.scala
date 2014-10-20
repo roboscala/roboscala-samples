@@ -26,8 +26,10 @@ object SampleBuild extends Build {
           unmanagedResources in Compile += sourceDirectory.value / "assets",
           options in Proguard += ProguardConf.robovm,
           options in Proguard += keepMain("Main"),
-          merge in Proguard := false,
-          alternativeInputJars := Some((proguard in Proguard).value)
+          merge in Proguard := false
+          // *NOTE* Due to a bug in LLVM, samples fail to build for the sim.
+          // Uncomment this line if you are running in the simulator.
+          // alternativeInputJars := Some((proguard in Proguard).value)
         )
       )
     }
