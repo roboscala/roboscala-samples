@@ -1,32 +1,31 @@
-Scala iOS Demos
-===============
+Scala RoboVM sample projects
+============================
 
 Examples of using Scala to create iOS apps and games with [sbt-robovm](https://github.com/ajhager/sbt-robovm) and [RoboVM](http://www.robovm.org/).
 
-## Prerequisities
+See [sbt-robovm](https://github.com/roboscala/sbt-robovm) for setup instructions.
 
- * [RoboVM 0.0.14]()
- * Current snapshot of [sbt-robovm plugin](https://github.com/roboscala/sbt-robovm) should be installed in your local ivy repository:
-```
-$ git clone git://github.com/ajhager/sbt-robovm.git
-$ cd sbt-robovm
-$ sbt publish-local
-```
+*NOTE* Due to a bug in LLVM, most samples will fail to build for the simulator unless run through ProGuard first. Uncommenting the noted line in build.scala will fix the issue, but your builds will take _much_ longer. Testing on an actual device is recommended until the bug is fixed. See [RoboVM issue #313](https://github.com/robovm/robovm/issues/313) for updates.
 
-## Run
+
+## Usage
 
 You can run each demo on device or simulator:
 
-    $ sbt demo-name/device
-    $ sbt demo-name/iphone-sim
-    $ sbt demo-name/ipad-sim
+```bash
+$ sbt demo-name/device
+$ sbt demo-name/iphone-sim
+$ sbt demo-name/ipad-sim
+```
 
 Or for native applications:
-    
-    $ sbt demo-name/native
+
+```bash
+$ sbt demo-name/native
+```
 
 ## Demos
 
- * empty: provides just an application delegate and a window
- * hello: setting up simple view
- * native: example of compiling native desktop programs
+* empty: provides just an application delegate and a window
+* hello: setting up simple view
+* native: example of compiling native desktop programs
