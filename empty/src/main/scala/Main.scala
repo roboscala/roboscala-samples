@@ -5,7 +5,7 @@ class AppDelegate extends UIApplicationDelegateAdapter {
   lazy val window = new UIWindow(UIScreen.getMainScreen.getBounds)
 
   override def didFinishLaunching(application: UIApplication) {
-    window.setBackgroundColor(UIColor.white())
+    window.setBackgroundColor(UIColor.cyan())
     window.makeKeyAndVisible()
   }  
 }
