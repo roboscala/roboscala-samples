@@ -117,6 +117,12 @@ object Main {
           Some(new UnaryOperator(_.ceil))
         case "sqrt" =>
           Some(new UnaryOperator(n => Math.sqrt(n)))
+	case "sin" =>
+	  Some(new UnaryOperator(n => Math.sin(n)))
+	case "cos" =>
+	  Some(new UnaryOperator(n => Math.cos(n)))
+	case "tan" =>
+	  Some(new UnaryOperator(n => Math.tan(n)))
         case _ => None
       }
     }
