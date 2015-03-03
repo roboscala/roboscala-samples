@@ -41,9 +41,9 @@ object Main {
        */
       def popResult():Double = {
         pop() match {
-          case Literal(value,_) => value
-          case UnaryOperator(operator,_) => operator(popResult())
-          case BinaryOperator(operator,_) => operator(popResult(),popResult())
+          case Literal(value) => value
+          case UnaryOperator(operator) => operator(popResult())
+          case BinaryOperator(operator) => operator(popResult(),popResult())
         }
       }
 
