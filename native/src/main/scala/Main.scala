@@ -2,10 +2,10 @@ import scala.io.StdIn
 
 /**
  * Example Scala project implementing simple prefix calculator.
- * 
+ *
  * For more info about prefix notation see https://en.wikipedia.org/wiki/Polish_notation
- * 
- * 
+ *
+ *
  */
 object Main {
 
@@ -18,12 +18,12 @@ object Main {
     println(" (Try something like \"+ 2 * 8 8\", it is same as 2 + 8 * 8)")
 
     var line = StdIn.readLine()
-    while(line != null && line.nonEmpty){
+    while (line != null && line.nonEmpty) {
       var tokens = line.split("(\\ )+").toList
 
       var exceptionPlace = "start"
-      def pop():Token = {
-        if(tokens == Nil) throw new ParsingException(s"Not enough tokens after $exceptionPlace")
+      def pop(): Token = {
+        if (tokens == Nil) throw new ParsingException(s"Not enough tokens after $exceptionPlace")
         val head = tokens.head
         exceptionPlace = head
         tokens = tokens.tail
@@ -39,19 +39,19 @@ object Main {
        * Take expression and evaluate it, recursively calls itself to resolve children expressions.
        * @return value of expression on stack
        */
-      def popResult():Double = {
+      def popResult(): Double = {
         pop() match {
           case Literal(value) => value
           case UnaryOperator(operator) => operator(popResult())
-          case BinaryOperator(operator) => operator(popResult(),popResult())
+          case BinaryOperator(operator) => operator(popResult(), popResult())
         }
       }
 
-      try{
-        while(tokens.nonEmpty){
-          println("= "+popResult())
+      try {
+        while (tokens.nonEmpty) {
+          println("= " + popResult())
         }
-      }catch {
+      } catch {
         case ParsingException(message) =>
           println(message)
       }
@@ -63,7 +63,7 @@ object Main {
   /**
    * Exception thrown when something cannot be parsed correctly
    */
-  case class ParsingException(message:String) extends Exception
+  case class ParsingException(message: String) extends Exception
 
   /**
    * Base token class.
@@ -81,20 +81,20 @@ object Main {
   /**
    * Token that does not depend on any other tokens, directly contains some number
    */
-  final case class Literal(literal:Double) extends Token
+  final case class Literal(literal: Double) extends Token
 
   object LiteralMatch {
-    def unapply(token:String):Option[Literal] = {
+    def unapply(token: String): Option[Literal] = {
       token match {
         case "pi" =>
           Some(new Literal(Math.PI))
         case "e" =>
           Some(new Literal(Math.E))
         case number =>
-          try{
+          try {
             Some(new Literal(number.toDouble))
-          }catch{
-            case nfe:NumberFormatException =>
+          } catch {
+            case nfe: NumberFormatException =>
               None
           }
       }
@@ -104,10 +104,10 @@ object Main {
   /**
    * Token that transforms result of next expression
    */
-  final case class UnaryOperator(function:Double => Double) extends Token
+  final case class UnaryOperator(function: Double => Double) extends Token
 
   object UnaryOperatorMatch {
-    def unapply(token:String):Option[UnaryOperator] = {
+    def unapply(token: String): Option[UnaryOperator] = {
       token match {
         case "floor" =>
           Some(new UnaryOperator(_.floor))
@@ -117,12 +117,22 @@ object Main {
           Some(new UnaryOperator(_.ceil))
         case "sqrt" =>
           Some(new UnaryOperator(n => Math.sqrt(n)))
-	case "sin" =>
-	  Some(new UnaryOperator(n => Math.sin(n)))
-	case "cos" =>
-	  Some(new UnaryOperator(n => Math.cos(n)))
-	case "tan" =>
-	  Some(new UnaryOperator(n => Math.tan(n)))
+        case "sin" =>
+          Some(new UnaryOperator(n => Math.sin(n)))
+        case "cos" =>
+          Some(new UnaryOperator(n => Math.cos(n)))
+        case "tan" =>
+          Some(new UnaryOperator(n => Math.tan(n)))
+        case "sind" =>
+          Some(new UnaryOperator(n => Math.sin(Math.toRadians(n))))
+        case "cosd" =>
+          Some(new UnaryOperator(n => Math.cos(Math.toRadians(n))))
+        case "tand" =>
+          Some(new UnaryOperator(n => Math.tan(Math.toRadians(n))))
+        case "deg" =>
+          Some(new UnaryOperator(n => Math.toDegrees(n)))
+        case "rad" =>
+          Some(new UnaryOperator(n => Math.toRadians(n)))
         case _ => None
       }
     }
@@ -131,10 +141,10 @@ object Main {
   /**
    * Token that transforms result of next two expressions
    */
-  final case class BinaryOperator(function:(Double,Double) => Double) extends Token
+  final case class BinaryOperator(function: (Double, Double) => Double) extends Token
 
   object BinaryOperatorMatch {
-    def unapply(token:String):Option[BinaryOperator] = {
+    def unapply(token: String): Option[BinaryOperator] = {
       token match {
         case "+" =>
           Some(new BinaryOperator(_ + _))
