@@ -20,7 +20,7 @@ object SampleBuild extends Build {
    * TIP: Unless you are doing something which requires native compilation, you can compile and run the project as normal scala/java with "sbt native/run")
    *
    * NOTE: Example project uses standard input, which is not yet connected by RoboVM, so you cannot interact directly in sbt.
-   *       As a workaround, launch compiled executable in Terminal (./native/target/robovmtmp/NativeRobo) or launch non-native
+   *       As a workaround, launch compiled executable in Terminal (./native/target/robovm.tmp/NativeRobo) or launch non-native
    */
   lazy val native = NativeProject(id = "native", base = file("native"), settings = sharedSettings ++ Seq(
     connectInput := true, //So command to the program get through sbt (Does not work yet for native)
