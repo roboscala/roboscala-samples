@@ -1,1 +1,1 @@
-addSbtPlugin("org.roboscala" % "sbt-robovm" % "1.1.0-SNAPSHOT")
+addSbtPlugin("org.roboscala" % "sbt-robovm" % "1.4.0-SNAPSHOT")

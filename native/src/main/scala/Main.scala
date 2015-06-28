@@ -157,7 +157,7 @@ object Main {
         case "%" | "mod" =>
           Some(new BinaryOperator(_ % _))
         case "^" | "pow" =>
-          Some(new BinaryOperator(_ + _))
+          Some(new BinaryOperator(Math.pow))
         case _ => None
       }
     }

@@ -45,10 +45,11 @@ object SampleBuild extends Build {
 
   /**
    * Simple iOS project, showcasing some UI elements and configuration.
+   * Can be run using "sbt hello/ipadSim" or similar task.
    */
   lazy val hello = iOSProject("hello", file("hello"), settings = iosSettings ++ Seq(
     robovmConfiguration := Right( //You can put here Left(file("pathTo/robovm.xml")) or Right(robovm.xml content), as shown here
-      <config> <!-- See http://docs.robovm.com/user/1.0.0-SNAPSHOT/#config-reference -->
+      <config> <!-- See http://docs.robovm.com/configuration.html -->
         <executableName>HelloRobo</executableName>
         <mainClass>${{app.mainclass}}</mainClass> <!-- app.mainclass is defined in robovmProperties by default, but you can use anything you want. Note that you have to use double {{ and }}. -->
         <resources>
