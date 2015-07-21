@@ -5,7 +5,7 @@ import sbtrobovm.RobovmPlugin._
 object SampleBuild extends Build {
 
   private val sharedSettings = Seq(
-    scalaVersion := "2.11.5",
+    scalaVersion := "2.11.7",
     robovmVerbose := true, //This will show debug output from RoboVM, enable if you like lot of text or are debugging
     unmanagedResources in Compile += sourceDirectory.value / "assets"
   )
