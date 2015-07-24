@@ -2,24 +2,19 @@ import org.robovm.apple.foundation.NSAutoreleasePool
 import org.robovm.apple.uikit._
 
 class HelloWorld extends UIApplicationDelegateAdapter {
-  var window: UIWindow = _
+  lazy val window = new UIWindow(UIScreen.getMainScreen.getBounds)
 
-  override def didFinishLaunching(applicaiton:UIApplication, launchOptions:UIApplicationLaunchOptions) : Boolean = {
-    val myViewController = new MyViewController();
-
-    window = new UIWindow(UIScreen.getMainScreen().getBounds())
-    window.setRootViewController(myViewController);
+  override def didFinishLaunching(applicaiton: UIApplication, launchOptions: UIApplicationLaunchOptions): Boolean = {
+    window.setRootViewController(new MyViewController())
     window.makeKeyAndVisible()
-    addStrongRef(window);
+    addStrongRef(window)
 
-    return true;
+    true
   }
 }
 
-object Main {
-  def main(args: Array[String]) {
-    val pool = new NSAutoreleasePool()
-    UIApplication.main(args, null, classOf[HelloWorld])
-    pool.drain()
-  }
+object Main extends App {
+  val pool = new NSAutoreleasePool()
+  UIApplication.main(args, null, classOf[HelloWorld])
+  pool.drain()
 }
