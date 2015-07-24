@@ -8,7 +8,7 @@ class MyViewController extends UIViewController {
   var string = "World"
 
   override def viewDidLoad() {
-    val background = new UIImageView(UIImage.create("assets/Background.png"))
+    val background = new UIImageView(UIImage.create("Background.png"))
     background.setFrame(new CGRect(0, 0, 320, 480))
     background.setContentMode(UIViewContentMode.Center)
     background.setUserInteractionEnabled(false)

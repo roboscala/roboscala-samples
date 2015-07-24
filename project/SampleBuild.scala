@@ -6,8 +6,7 @@ object SampleBuild extends Build {
 
   private val sharedSettings = Seq(
     scalaVersion := "2.11.7",
-    robovmVerbose := true, //This will show debug output from RoboVM, enable if you like lot of text or are debugging
-    unmanagedResources in Compile += sourceDirectory.value / "assets"
+    robovmVerbose := true //This will show debug output from RoboVM, enable if you like lot of text or are debugging
   )
 
   val roboVersion = RoboVMVersion //Taking the RoboVM version directly from plugin (sbtrobovm.RobovmPlugin.RoboVMVersion)
@@ -53,14 +52,16 @@ object SampleBuild extends Build {
         <executableName>HelloRobo</executableName>
         <mainClass>${{app.mainclass}}</mainClass> <!-- app.mainclass is defined in robovmProperties by default, but you can use anything you want. Note that you have to use double {{ and }}. -->
         <resources>
-          ${
+          <resource>
+            {
             //You can use inline scala here
             val assetDirectory = "src/main/assets"
 
-            <resource>${assetDirectory}</resource>
+            <directory>{assetDirectory}</directory>
             /* Inline scala allows for very complex and flexible configuration.
             * Paths are relative to the project base directory. */
-          }
+            }
+          </resource>
         </resources>
         <!--
           You can add more settings
