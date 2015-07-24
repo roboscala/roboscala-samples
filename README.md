@@ -11,8 +11,8 @@ You can run each demo on device or simulator:
 
 ```bash
 $ sbt demo-name/device
-$ sbt demo-name/iphone-sim
-$ sbt demo-name/ipad-sim
+$ sbt demo-name/iphoneSim
+$ sbt demo-name/ipadSim
 ```
 
 Or for native applications:
