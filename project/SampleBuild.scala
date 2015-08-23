@@ -9,7 +9,7 @@ object SampleBuild extends Build {
     robovmVerbose := true //This will show debug output from RoboVM, enable if you like lot of text or are debugging
   )
 
-  val roboVersion = RoboVMVersion //Taking the RoboVM version directly from plugin (sbtrobovm.RobovmPlugin.RoboVMVersion)
+  val roboVersion = RoboVMVersion // Taking the RoboVM version directly from the plugin
 
   /**
    * Example of simple native console application.

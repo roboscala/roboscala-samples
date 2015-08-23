@@ -1,1 +1,3 @@
-addSbtPlugin("org.roboscala" % "sbt-robovm" % "1.6.0")
+resolvers += Resolver.sonatypeRepo("snapshots")
+
+addSbtPlugin("org.roboscala" % "sbt-robovm" % "1.6.1-SNAPSHOT")
