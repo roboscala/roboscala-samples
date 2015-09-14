@@ -64,3 +64,28 @@ lazy val hello = Project("hello", file("hello"), settings = iosSettings ++ Seq(
     </config>
   )
 ))
+
+/**
+ * A project much like the `hello` project, but this time using Interface Builder integration. (Licensed only)
+ *
+ * The setup is mostly the same, there are some notable exceptions:
+ * Info.plist is specified explicitly so:
+    <key>UIMainStoryboardFile</key>
+    <string>HelloStoryboard</string>
+ * can be added.
+ * It could be of course done inline, like robovm.xml, but since it is rather big, it is left separate for clarity.
+ * Keeping it separate also allows it to be modified from Xcode.
+ */
+lazy val ibHello = project in file("ibHello") settings iosSettings settings(
+  robovmConfiguration := Right(
+    <config>
+      <executableName>HelloRoboIB</executableName>
+      <mainClass>${{app.mainclass}}</mainClass>
+      <resources>
+        <resource>
+          <directory>src/main/resources</directory>
+        </resource>
+      </resources>
+      <iosInfoPList>Info.plist.xml</iosInfoPList><!-- .xml is only for the IDE to recognize it as xml -->
+    </config>
+  ))
